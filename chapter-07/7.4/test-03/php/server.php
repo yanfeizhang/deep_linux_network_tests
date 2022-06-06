@@ -1,0 +1,46 @@
+<?php
+/**
+ * Socket服务端
+ */
+set_time_limit(0);
+
+if(!isset($argv[1]) || !isset($argv[2])){
+	echo "usage: php server.php {ip} {port}\n";
+	exit;
+}
+$ip = $argv[1];
+$port = $argv[2];
+
+if(($sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP)) < 0) {
+    echo "socket_create() 失败的原因是:" . socket_strerror($sock) . "\n";
+    exit();
+}
+
+if(($ret = socket_bind($sock, $ip, $port)) < 0) {
+    echo "socket_bind() 失败的原因是:" . socket_strerror($ret) . "\n";
+    exit();
+}
+
+if(($ret = socket_listen($sock,1024)) < 0) {
+    echo "socket_listen() 失败的原因是:" . socket_strerror($ret) . "\n";
+    exit();
+}
+echo "$ip $port listen ok!\n";
+
+$sockets = array();
+$count = 0;
+do{
+    //接收一个Socket连接
+    $con = socket_accept($sock);
+    if (false == $con) {
+        echo "$ip $port socket_accept() failed: reason:".socket_strerror(socket_last_error($socket))."\n";
+        continue;
+    } else {
+        echo "$ip $port accept success: ".$count++."\n";
+
+        //接收数据
+        $msg = socket_read($con, 1024);
+        echo "收到的信息:".$msg."\n";
+    }
+	$sockets[$count] = $con;
+}while(true);
