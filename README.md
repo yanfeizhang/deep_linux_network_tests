@@ -27,5 +27,5 @@
 ![](imgs/author.png) 
 
 ## 书籍勘误列表
-- [](changelogs/index.md)
+- [书籍勘误列表](changelogs/index.md)
 
