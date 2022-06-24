@@ -29,7 +29,7 @@
 - P22: 此页开头的代码描述和样式有问题，整段代码改成如下形式。
 ```c
 //file: drivers/net/ethernet/intel/igb/igb_main.c
-int igb_setup_rx_resources(struct igb_ring *tx_ring)
+int igb_setup_rx_resources(struct igb_ring *rx_ring)
 {
 	//1. 申请 igb_rx_buffer 数组内存
 	size = sizeof(struct igb_rx_buffer) * rx_ring->count;
