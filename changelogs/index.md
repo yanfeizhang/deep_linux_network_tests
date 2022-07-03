@@ -21,7 +21,7 @@
 - P303:第一段代码缩进有问题
 
 ### 第二次印刷基础之上的勘误与优化 
-- P14: 图2.3 上面这段话中函数调用关系描述反了，整段话改成如下这样: "系统初始化的时候会执行到 spawn_ksoftirqd（位于kernel/softirq.c）来创建出 softirqd 进程，执行过程如图 2.3。"
+- P14: 图2.3 上面这段话中函数调用关系描述反了，整段话改成如下这样: "系统初始化的时候会执行到 spawn_ksoftirqd（位于kernel/softirq.c）来创建出 softirqd 线程，执行过程如图 2.3。"
 - P15: 图2.4 中第4步 "soft_irq_vec" 修改为 "softirq_vec"
 - P16: 图2.5 “fs_initcall(fs_initcall)” => “fs_initcall(inet_init)”
 - P19: 图2.6 下下端开头的描述有误，net_device_ops 应该为 igb_netdev_ops。整段话修改后就是“第 6 步注册net_device_ops用的是igb_netdev_ops变量，其中包含了igb_open，该函数在网卡被启动的时候会被调用。”
@@ -156,7 +156,7 @@ net/ipv4/ip_output.c: return NF_HOOK_COND(NFPROTO_IPV4, NF_INET_POST_ROUTING, sk
 - P35: “将传过来的poll_list添加到了CPU变量softnet_data的poll_list里”，建议将“CPU变量”改为“Per-CPU变量”
 - P45: “首先调用sock_alloc来分配一个struct sock内核对象”，这里的 “sock” 应该改为 “socket”
 - P60: 图3.14中，将结构体struct eventpoll误写成struct eventepoll
-- P63: 图3.16中，将结构体struct eventpoll误写成struct eventepol
+- P63: 图3.16中，将结构体struct eventpoll误写成struct eventepoll
 - P66 & P72: 图3.18 和图3.21 中的 struct file 这个方框中的 *socket 是错的，应该和图3.17一样，改为"*private_data"。
 - P80: 在 1) 阻塞到底是怎么一回事中的"TASK_RUNNKNG" 改为 "TASK_RUNNING"
 - P82: 本页中间的“等待时间”改成“等待事件”
@@ -169,7 +169,8 @@ net/ipv4/ip_output.c: return NF_HOOK_COND(NFPROTO_IPV4, NF_INET_POST_ROUTING, sk
 Trying 10.162.*.*...
 telnet: connect to address 10.162.*.*: Connection refused
 ```
-- P170，自旋锁是一种非阻塞的锁的说法不太严谨，"是一种非阻塞的锁"这一句改成“是一种非睡眠锁”
+- P170: 自旋锁是一种非阻塞的锁的说法不太严谨，"是一种非阻塞的锁"这一句改成“是一种非睡眠锁”
+- P232: 图8.4.1中的第一个消息气泡小了
 - P254: 9.1 中的建议1的第三段， 其中有一个 UDP 错写成 UPD 了。
 - P283 & P284: 两页夹着的源码，正确的应该是  
 ```sh
@@ -178,6 +179,23 @@ telnet: connect to address 10.162.*.*: Connection refused
 # ip link set dev veth1_p up 
 # ip netns exec net1 ip link set dev veth1 up 
 ```
+
+### 第三次印刷基础之上的勘误和优化
+- P22: 此页开头的代码函数中的参数有问题，修改下参数部分。
+```c
+int igb_setup_rx_resources(struct igb_ring *tx_ring)
+```  
+
+修改为
+```c
+int igb_setup_rx_resources(struct igb_ring *rx_ring)
+```
+- P27: 目的是保证网络包的接收不霸占CPU不放。这里“不霸占CPU不放”修改成“不一直霸占CPU”，这样更通顺一些。
+- P92: 图4.5发送队列细节中的数组应该是tx不是rx。所以“igb_rx_buffer”应该改成“igb_tx_buffer”。"e1000_adv_rx_desc" 应该改为 “e1000_adv_tx_desc”。
+- P190: 图7.3 NUMA中的node，图片中的“内存控置器”应该为“内存控制器”
+- P210：第二段中间的，“这个功能会可能会...”，应该去掉一个会，改成“这个功能可能会...”
+- P311: 页中有一句话，其他的路由规则，一般都是在main路由表中记录着的，可以用ip route list table local命令查看。这里的 “local”是错的，应该是“main”
+- P312: 在发送数据的时候这一段中。后面有一句话，在这两个函数中分别过了OUTPUT和PREROUTING的各种规则。这里”PREROUTING”改成“POSTROUTING
 
 
 ### 致谢
