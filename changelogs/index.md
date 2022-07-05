@@ -181,6 +181,7 @@ telnet: connect to address 10.162.*.*: Connection refused
 ```
 
 ### 第三次印刷基础之上的勘误和优化
+- P12：图2.1下方的代码文件 driver/net/ethernet中的 “driver”改成“drivers”
 - P22: 此页开头的代码函数中的参数有问题，修改下参数部分。
 ```c
 int igb_setup_rx_resources(struct igb_ring *tx_ring)
@@ -193,6 +194,7 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
 - P27: 目的是保证网络包的接收不霸占CPU不放。这里“不霸占CPU不放”修改成“不一直霸占CPU”，这样更通顺一些。
 - P92: 图4.5发送队列细节中的数组应该是tx不是rx。所以“igb_rx_buffer”应该改成“igb_tx_buffer”。"e1000_adv_rx_desc" 应该改为 “e1000_adv_tx_desc”。
 - P190: 图7.3 NUMA中的node，图片中的“内存控置器”应该为“内存控制器”
+- P193: 图7.6伙伴系统中的三个 “RELCLAIMABLE” 中多了个L，应该改为“RECLAIMABLE”
 - P210：第二段中间的，“这个功能会可能会...”，应该去掉一个会，改成“这个功能可能会...”
 - P311: 页中有一句话，其他的路由规则，一般都是在main路由表中记录着的，可以用ip route list table local命令查看。这里的 “local”是错的，应该是“main”
 - P312: 在发送数据的时候这一段中。后面有一句话，在这两个函数中分别过了OUTPUT和PREROUTING的各种规则。这里”PREROUTING”改成“POSTROUTING
