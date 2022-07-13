@@ -2,6 +2,17 @@
 本工程是《深入理解Linux网络 - 修炼底层内功、掌握高性能原理》一书的配套代码。
 ![](imgs/book.png) 
 
+该书市场接受度非常的高，在首发当天就斩获了京东科技类图书的第一名，几天就将首印卖断了货。在2022年6月所有计算机类新书中排名第一。
+
+![avatar](imgs/book.png)  
+
+点击：[5折京东购买地址](https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BANcJK1olXwcFV19UDkoTC18IGVsTWAIFUG4ZVxNJXF9RXh5UHw0cSgYYXBcIWDoXSQVJQwYAVFhYDEwTHDZNRwYlCF1nABo_UA50SxVoUidML2RaNEQUeEcbM244GFoWVQIBV11UDnsnA2g4STXN67Da8e9B3OGY1uefK1olXQEGUVdYD04VBmsMGWsSXQ8yHQYCXglTVDtXK2slXjYFVFdJDjlWUXsOaWslXTYBZBwzCB4XVmYBGl9HWFNXUVYJDEMWAGcAT1kQXA8DXV5ZAEsnAW4JH1IlbQ)
+
+另外大家也可以加飞哥微信（zhangyanfei748527）进读者交流群。
+
+**敬请扫码关注微信公众号「开发内功修炼」，及时获得最新硬核文章！**   
+![avatar](imgs/official_accounts.jpg)   
+
 ## 代码快速指引
 
 ### 第七章

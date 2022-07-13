@@ -119,3 +119,11 @@ Slab:            3241528 kB
 
 实验结束的时候，记得`make stop-cli`结束所有客户端进程，`make stop-srv`结束所有服务器进程。
 
+
+#### 注意：连接数无法突破26万的问题解决
+最近发现有部分同学反馈连接数无法突破26万，经过排查后发现是因为 nf_conntrack_max 参数的问题。
+解决办法：在客户端和服务端上都修改 nf_conntrack_max 的配置
+```sh
+# vi /etc/sysctl.conf
+net.nf_conntrack_max = 1100000
+```
