@@ -195,11 +195,13 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
 - P92: 图4.5发送队列细节中的数组应该是tx不是rx。所以“igb_rx_buffer”应该改成“igb_tx_buffer”。"e1000_adv_rx_desc" 应该改为 “e1000_adv_tx_desc”。
 - P190: 图7.3 NUMA中的node，图片中的“内存控置器”应该为“内存控制器”
 - P193: 图7.6伙伴系统中的三个 “RELCLAIMABLE” 中多了个L，应该改为“RECLAIMABLE”
-- P210：第二段中间的，“这个功能会可能会...”，应该去掉一个会，改成“这个功能可能会...”
+- P210: 第二段中间的，“这个功能会可能会...”，应该去掉一个会，改成“这个功能可能会...”
+- P275: 第一行代码和P274页最底下的代码重了，所以把295页第一行“ip link add veth0 type veth peer name veth1”删掉
 - P311: 页中有一句话，其他的路由规则，一般都是在main路由表中记录着的，可以用ip route list table local命令查看。这里的 “local”是错的，应该是“main”
 - P312: 在发送数据的时候这一段中。后面有一句话，在这两个函数中分别过了OUTPUT和PREROUTING的各种规则。这里”PREROUTING”改成“POSTROUTING
 
 
+
 ### 致谢
-感谢@巩鹏军、@彭东林、@孙国路、@王锦、@随行、@harrytc、@t涛、@point、@LJ、@WannaCry 等同学提出的非常棒的改进建议！
+感谢@巩鹏军、@彭东林、@孙国路、@王锦、@随行、@harrytc、@t涛、@point、@LJ、@WannaCry、@久 等同学提出的非常棒的改进建议！
 
