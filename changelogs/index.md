@@ -11,7 +11,7 @@
 - P49 同上，本业下方还有“从图3.1中得出”，这句改成“从图3.6中得出”
 - P51 尾部 void 单独占一行怪怪的，把它和下一行合并起来把
 - P52 3.3.2 "前文中讲到了"改成“第2章中”
-- P67 最底下的代码对齐有点错乱，
+- P67 最底下的代码对齐有点错乱。将 ep_ptable_queue_proc 函数中 `f (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))` 改成 `if (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))`
 - P83: 最后面 Redis 6.0 版本中也开始支持“多进程”了改成“多线程”。
 - P85: 根据错误图4中所示，将 3) 发送网络数据的时候 这个问题中的第二段，挪到 4.1 小节最后吧，更通顺一些。
 - P129: 本页最后的一个 “个” 字删掉吧
@@ -185,7 +185,7 @@ telnet: connect to address 10.162.*.*: Connection refused
 - P22: 此页开头的代码函数中的参数有问题，修改下参数部分。
 ```c
 int igb_setup_rx_resources(struct igb_ring *tx_ring)
-```  
+```
 
 修改为
 ```c
