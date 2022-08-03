@@ -191,7 +191,16 @@ int igb_setup_rx_resources(struct igb_ring *tx_ring)
 ```c
 int igb_setup_rx_resources(struct igb_ring *rx_ring)
 ```
+- P25，图2.11，驱动 lgb_poll()，这里应该是 igb_poll()
 - P27: 目的是保证网络包的接收不霸占CPU不放。这里“不霸占CPU不放”修改成“不一直霸占CPU”，这样更通顺一些。
+- P67 代码中的“if”少了个“i”。将 ep_ptable_queue_proc 函数中 
+```c
+f (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))
+``` 
+改成 
+```c
+if (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))
+```
 - P92: 图4.5发送队列细节中的数组应该是tx不是rx。所以“igb_rx_buffer”应该改成“igb_tx_buffer”。"e1000_adv_rx_desc" 应该改为 “e1000_adv_tx_desc”。
 - P190: 图7.3 NUMA中的node，图片中的“内存控置器”应该为“内存控制器”
 - P193: 图7.6伙伴系统中的三个 “RELCLAIMABLE” 中多了个L，应该改为“RECLAIMABLE”
@@ -203,5 +212,5 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
 
 
 ### 致谢
-感谢@巩鹏军、@彭东林、@孙国路、@王锦、@随行、@harrytc、@t涛、@point、@LJ、@WannaCry、@久 等同学提出的非常棒的改进建议！
+感谢@巩鹏军、@彭东林、@孙国路、@王锦、@随行、@harrytc、@t涛、@point、@LJ、@WannaCry、@久、@jame 等同学提出的非常棒的改进建议！
 
