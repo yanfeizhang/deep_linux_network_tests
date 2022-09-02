@@ -202,6 +202,7 @@ f (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))
 if (epi->nwait >= 0 && (pwq = kmem_cache_alloc(pwq_cache, GFP_KERNEL)))
 ```
 - P92: 图4.5发送队列细节中的数组应该是tx不是rx。所以“igb_rx_buffer”应该改成“igb_tx_buffer”。"e1000_adv_rx_desc" 应该改为 “e1000_adv_tx_desc”。
+- P106: 图4.17中dev_hard_start_xmit应该是画在网络设备子系统里更合适。还有P109页的第二段里，“并也最终调用到驱动程序里的入口函数dev_hard_start_xmit”，这句话应该改成“并也最终调用到通往驱动程序的dev_hard_start_xmit”
 - P190: 图7.3 NUMA中的node，图片中的“内存控置器”应该为“内存控制器”
 - P193: 图7.6伙伴系统中的三个 “RELCLAIMABLE” 中多了个L，应该改为“RECLAIMABLE”
 - P210: 第二段中间的，“这个功能会可能会...”，应该去掉一个会，改成“这个功能可能会...”
